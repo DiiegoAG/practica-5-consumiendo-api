@@ -1,0 +1,83 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:valorant_tips/constants/app_assets.dart';
+import 'package:valorant_tips/screens/agents_screen.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
+  List<Widget> tabs = [
+    const AgentsScreen(),
+  ];
+
+  // Assets
+  final AppAssets _appAssets = AppAssets();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: PersistentTabView(
+        context,
+        navBarStyle: NavBarStyle.style7,
+        backgroundColor: Colors.black,
+        screens: tabs,
+        items: [
+          // Agents
+          PersistentBottomNavBarItem(
+              activeColorPrimary: CupertinoColors.destructiveRed,
+              inactiveColorPrimary: CupertinoColors.inactiveGray,
+              activeColorSecondary: Colors.white,
+              inactiveIcon: Image.asset(
+                _appAssets.agents_icon,
+                color: CupertinoColors.inactiveGray,
+                width: 18,
+              ),
+              icon: Image.asset(
+                _appAssets.agents_icon,
+                width: 18,
+              ),
+              title: 'Agents'),
+
+          // Maps
+          PersistentBottomNavBarItem(
+              activeColorPrimary: CupertinoColors.destructiveRed,
+              inactiveColorPrimary: CupertinoColors.inactiveGray,
+              activeColorSecondary: Colors.white,
+              icon: const Icon(Icons.map_rounded),
+              title: 'Maps'),
+
+          // Weapons
+          PersistentBottomNavBarItem(
+              activeColorPrimary: CupertinoColors.destructiveRed,
+              inactiveColorPrimary: CupertinoColors.inactiveGray,
+              activeColorSecondary: CupertinoColors.white,
+              icon: Image.asset(
+                _appAssets.weapons_icon,
+                width: 25,
+              ),
+              inactiveIcon: Image.asset(
+                _appAssets.weapons_icon,
+                width: 25,
+                color: CupertinoColors.inactiveGray,
+              ),
+              title: 'Weapons'),
+
+          // Ranks
+          PersistentBottomNavBarItem(
+              activeColorPrimary: CupertinoColors.destructiveRed,
+              inactiveColorPrimary: CupertinoColors.inactiveGray,
+              activeColorSecondary: Colors.white,
+              icon: const Icon(Icons.emoji_events_outlined),
+              title: 'Ranks'),
+        ],
+      ),
+    );
+  }
+}

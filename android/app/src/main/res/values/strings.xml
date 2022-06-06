@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">"fl_practica3"</string>
+   <string name="facebook_app_id">534139951594280</string>
+   <string name="fb_login_protocol_scheme">fb534139951594280</string>
+   <string name="facebook_client_token">9fd6b7174e5f15ffb6784141cf5989af</string>
+</resources>
